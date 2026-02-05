@@ -6,6 +6,7 @@
 
 <h2>Project Screenshots:</h2>
 
+<div style={display:inline-flex}>
 <img src="https://github.com/astememe/OpenAni/blob/master/README_Images/Splash%20Screen.png?raw=true" alt="project-screenshot" width="120" height="100/">
 
 <img src="https://github.com/astememe/OpenAni/blob/master/README_Images/Login.png?raw=true" alt="project-screenshot" width="120" height="100/">
@@ -21,6 +22,8 @@
 <img src="https://github.com/astememe/OpenAni/blob/master/README_Images/Download.png?raw=true" alt="project-screenshot" width="120" height="400/">
 
 <img src="https://github.com/astememe/OpenAni/blob/master/README_Images/Account.png?raw=true" alt="project-screenshot" width="120" height="400/">
+  
+</div>
 
   
   
