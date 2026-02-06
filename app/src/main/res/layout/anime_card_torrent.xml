@@ -49,6 +49,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -57,7 +58,24 @@
                     android:layout_height="20dp"
                     android:text="15 GB"
                     android:fontFamily="@font/zud"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <TextView
+                    android:id="@+id/fecha_actualizacion_torrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text="2025-10-5"
+                    android:fontFamily="@font/zud"
+                    android:textSize="20sp"
+                    android:layout_marginHorizontal="10dp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/flecha_arriba_torrent"
+                    android:layout_marginLeft="5dp"
+                    />
 
             </LinearLayout>
         </LinearLayout>
@@ -85,14 +103,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                >
                 <ImageView
                     android:id="@+id/estrella_favorita_icono"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:tint="@color/amarillo_favorito"
                     android:src="@drawable/estrella_favorita_icono"
-                    app:layout_constraintRight_toRightOf="parent"
                     />
             </LinearLayout>
 
@@ -100,7 +119,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                >
                 <ImageView
                     android:id="@+id/mano_like_icono"
                     android:layout_width="50dp"
@@ -121,7 +142,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center"
+                >
                 <ImageView
                     android:id="@+id/mano_dislike_icono"
                     android:layout_width="50dp"
