@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.astememe.openani.Adaptador_Evento.ChatAdapter;
+import com.astememe.openani.Django_Manager.Interfaces.ChatInterface;
+import com.astememe.openani.Django_Manager.Interfaces.DjangoClient;
 import com.astememe.openani.Django_Manager.Models.MessageModel;
 import com.astememe.openani.R;
 
@@ -32,6 +34,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Chat extends AppCompatActivity {
 
@@ -78,7 +83,7 @@ public class Chat extends AppCompatActivity {
                 finish();
             }
         });
-
+        cargarTodosLosMensajes();
         iniciarWebSocket();
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,11 +93,38 @@ public class Chat extends AppCompatActivity {
         });
     }
 
+    private void cargarTodosLosMensajes() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String tokenRaw = preferences.getString("token", "");
+        String tokenFormat = "Bearer " + tokenRaw;
+
+        DjangoClient.getMessages_Interface().getMessage(tokenFormat, roomId).enqueue(new Callback<MessageModel>() {
+            @Override
+            public void onResponse(Call<MessageModel> call, Response<MessageModel> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    listaMensajes.clear();
+                    if (response.body().getMensajes() != null) {
+                        listaMensajes.addAll(response.body().getMensajes());
+                    }
+                    adapter.notifyDataSetChanged();
+                    if (!listaMensajes.isEmpty()) {
+                        recyclerView.scrollToPosition(listaMensajes.size() - 1);
+                    }
+                    Log.d("DEBUG", "historial de mensajes cargado: " + listaMensajes.size());
+                } else {
+                    Log.e("DEBUG", "Error al traer el historial de mensajes: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MessageModel> call, Throwable t) {
+                Toast.makeText(Chat.this, "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("DEBUG", "Error: ", t);
+            }
+        });
+    }
     private void iniciarWebSocket() {
         OkHttpClient client = new OkHttpClient();
-
-//        String urlWebSocket = "ws://25.43.166.83:8000/ws/chat/" + roomId + "/";
-
         String urlWebSocket = "ws://10.0.2.2:8000/ws/chat/" + roomId + "/";
 
         Request request = new Request.Builder()

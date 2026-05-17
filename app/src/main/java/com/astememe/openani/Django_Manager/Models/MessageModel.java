@@ -22,7 +22,7 @@ public class MessageModel {
         @SerializedName("timestamp")
         private String fechaHora;
 
-        public MessageDetail(String emisor, String contenido, String fechaHora) {
+        public MessageDetail( String emisor, String contenido, String fechaHora) {
             this.emisor = emisor;
             this.contenido = contenido;
             this.fechaHora = fechaHora;

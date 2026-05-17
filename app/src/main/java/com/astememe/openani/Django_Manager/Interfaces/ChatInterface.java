@@ -16,7 +16,8 @@ import retrofit2.http.Query;
 public interface ChatInterface {
 
     @GET("messages/")
-    Call<MessageModel> getMessage(@Query("group_id") String group_id);
+
+    Call<MessageModel> getMessage(@Header("Authorization") String token, @Query("room_id") String group_id);
 
     @GET("rooms/")
     Call<RoomModel> getRooms(@Header("Authorization") String token);
