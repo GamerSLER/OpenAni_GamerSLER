@@ -1,13 +1,16 @@
 package com.astememe.openani.Ventanas;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -29,6 +32,7 @@ public class AllChatsActivity extends AppCompatActivity {
     SharedPreferences preferences;
     RoomAdapter adapter;
     List<RoomModel.RoomDetail> listaSalas = new ArrayList<>();
+    ConstraintLayout flecha_hacia_atras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +44,23 @@ public class AllChatsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        flecha_hacia_atras = findViewById(R.id.flecha_hacia_atras);
+
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         recyclerView = findViewById(R.id.recyclerViewChats);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new RoomAdapter(this, listaSalas);
         recyclerView.setAdapter(adapter);
         cargarSalas();
+
+
+        flecha_hacia_atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AllChatsActivity.this, MainAnime.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void cargarSalas() {

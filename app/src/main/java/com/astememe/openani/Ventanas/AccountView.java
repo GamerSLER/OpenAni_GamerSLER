@@ -53,9 +53,6 @@ public class AccountView extends AppCompatActivity {
     EditText descripcion, nombreUsuario, correo, contrasena;
     CircleImageView fotoPerfil;
 
-    View menuCambiarFoto;
-
-    ImageView cerrarMenu;
     LinearLayout primeraFoto, segundaFoto, terceraFoto, cuartaFoto, quintaFoto, sextaFoto, septimaFoto, octavaFoto, novenaFoto, decimaFoto, decimoPrimeraFoto, decimoSegundaFoto, decimoTerceraFoto, decimoCuartaFoto, decimoQuintaFoto;
     View botonCambiarFoto;
     LayoutInflater infladorDeCambiarFoto;
