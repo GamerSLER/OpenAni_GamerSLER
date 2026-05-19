@@ -71,7 +71,6 @@ public class MainAnime extends AppCompatActivity {
 
     TextView anime, anime_music_video, anime_english, anime_non_english, anime_original, manga, manga_english, manga_non_english, manga_original,  nombre_usuario, favorites, chat;
     ImageView foto_perfil;
-    ImageButton boton_descargar;
 
     Handler buscarDelayer = new Handler();
     Runnable buscar;
@@ -101,8 +100,6 @@ public class MainAnime extends AppCompatActivity {
         obtenerListaFavoritos();
         torrentRecycle.setAdapter(adapter);
         busqueda = findViewById(R.id.searchbar_anime);
-
-        boton_descargar = findViewById(R.id.imagebutton_download);
 
         barra_lateral_icono = findViewById(R.id.side_nav_main_anime);
         contenedor_menu_lateral = findViewById(R.id.contenedormenulateral);
