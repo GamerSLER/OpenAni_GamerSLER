@@ -54,7 +54,6 @@ OpenAni es una aplicación móvil de código abierto diseñada para los amantes 
 | Plataforma | Implementación | Detalles Técnicos |
 |:---:|---|---|
 | ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white) | **Android Studio** | • Java/Kotlin<br>• Retrofit + Gson<br>• Glide & RecycleView |
-| ![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white) | **iOS/Web** | • React Native<br>• TypeScript<br>• Axios & Navigator<br>• FontAwesome Icons |
 
 > Ambas versiones sincronizadas con base de datos Django centralizada
 
@@ -102,7 +101,6 @@ OpenAni es una aplicación móvil de código abierto diseñada para los amantes 
 | **Backend** | Django con API REST |
 | **Base de Datos** | Entidades de Usuario, Torrent y Comentarios con relaciones de favoritos |
 | **Android** | Retrofit y Gson para gestión de JSONs, Glide para imágenes, RecycleView para listas |
-| **React Native** | Axios para APIs, React Navigator para navegación, FontAwesome para iconos |
 
 ### Características de la Base de Datos
 
